@@ -180,21 +180,22 @@ function VisitSection() {
             </div>
           </div>
 
-          <Motion.a
-            href="https://maps.google.com/?q=Av.+San+Fernando+649,+Plaza+Cuicuilco"
-            target="_blank"
-            rel="noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm text-[#fff8eb] shadow-lg"
-            style={{
-              backgroundColor: "var(--color-primary)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            Cómo llegar
-            <Navigation size={16} />
-          </Motion.a>
+        <Motion.a
+  href="https://www.google.com/maps/place/Casa+Checo/@19.2973656,-99.1824757,19z/data=!4m6!3m5!1s0x85ce012337126625:0x1af168ec3a392ce4!8m2!3d19.2970377!4d-99.1823669!16s%2Fg%2F11yxy3mtll?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D"
+  target="_blank"
+  rel="noreferrer"
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.98 }}
+  className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm shadow-lg"
+  style={{
+    backgroundColor: "var(--color-primary)",
+    color: "#fff8eb",
+    fontFamily: "var(--font-body)",
+  }}
+>
+  Cómo llegar
+  <Navigation size={16} color="#fff8eb" />
+</Motion.a>
         </Motion.div>
       </div>
     </section>
