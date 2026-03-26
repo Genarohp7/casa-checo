@@ -1,7 +1,7 @@
 import { motion as Motion } from "motion/react";
 import image11 from "../assets/11.jpeg";
 import image12 from "../assets/12.jpeg";
-import image15 from "../assets/15.jpeg";
+import image15 from "../assets/20.jpg";
 
 const images = [
   {
