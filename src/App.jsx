@@ -4,6 +4,7 @@ import HeroSection from "./sections/HeroSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import SpaceSection from "./sections/SpaceSection";
 import PromotionsSection from "./sections/PromotionsSection";
+import VisitSection from "./sections/VisitSection";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <ExperienceSection />
         <SpaceSection />
         <PromotionsSection />
+        <VisitSection />
       </PageLayout>
     </SmoothScroll>
   );
