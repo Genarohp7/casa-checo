@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+:root {
+  --color-primary: #18236b;
+  --color-accent: #cf8621;
+  --color-cream: #e6ddbc;
+  --color-brown: #2f1b05;
+  --color-terra: #ab5a28;
+
+  --font-title: "Sarina", cursive;
+  --font-body: "DM Mono", monospace;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -10,4 +21,12 @@ html {
 
 body {
   margin: 0;
+  background-color: var(--color-cream);
+  color: var(--color-brown);
+  font-family: var(--font-body);
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
