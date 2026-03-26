@@ -10,19 +10,19 @@ function HeroSection() {
         <img
           src={heroImage}
           alt="Casa Checo"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-black/42" />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to top, rgba(47, 27, 5, 0.72) 0%, rgba(47, 27, 5, 0.18) 40%, rgba(0, 0, 0, 0.12) 100%)",
+              "linear-gradient(to top, rgba(47, 27, 5, 0.74) 0%, rgba(47, 27, 5, 0.26) 42%, rgba(0, 0, 0, 0.1) 100%)",
           }}
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl items-end px-6 pb-14 pt-28 sm:px-10 md:items-center md:pb-20">
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl items-end px-6 pb-14 pt-28 sm:px-10 md:items-center md:pb-20 md:pt-32">
         <div className="max-w-3xl">
           <Motion.img
             src={logo}
@@ -30,7 +30,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="mb-8 w-32 sm:w-36 md:w-40"
+            className="mb-8 w-28 sm:w-32 md:w-36"
           />
 
           <Motion.p
@@ -46,7 +46,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-4xl leading-tight text-[#fff8eb] sm:text-5xl md:text-6xl"
+            className="text-4xl leading-[1.05] text-[#fff8eb] sm:text-5xl md:text-6xl lg:text-7xl"
             style={{ fontFamily: "var(--font-title)" }}
           >
             Buena comida,
@@ -60,7 +60,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="mt-6 max-w-2xl text-sm leading-7 text-white/78 sm:text-base"
+            className="mt-6 max-w-2xl text-sm leading-7 text-white/78 sm:text-base sm:leading-8"
           >
             Un espacio con carácter, luz, jardín y una atmósfera pensada para
             disfrutar desayunos, comida, tragos y tiempo bien pasado.
@@ -70,7 +70,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.4, ease: "easeOut" }}
-            className="mt-8 flex flex-col gap-4 sm:flex-row"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4"
           >
             <Motion.a
               href="#ubicacion"

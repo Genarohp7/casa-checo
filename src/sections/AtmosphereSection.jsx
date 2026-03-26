@@ -3,6 +3,21 @@ import image11 from "../assets/11.jpeg";
 import image12 from "../assets/12.jpeg";
 import image15 from "../assets/15.jpeg";
 
+const images = [
+  {
+    src: image11,
+    alt: "Jardín de Casa Checo",
+  },
+  {
+    src: image12,
+    alt: "Entrada e interior de Casa Checo",
+  },
+  {
+    src: image15,
+    alt: "Barra e interior cálido de Casa Checo",
+  },
+];
+
 function AtmosphereSection() {
   return (
     <section
@@ -53,47 +68,27 @@ function AtmosphereSection() {
         </Motion.div>
 
         <div className="mt-14 grid gap-4 lg:grid-cols-[1fr_1.15fr_0.95fr]">
-          <Motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.18 }}
-            transition={{ duration: 0.75, ease: "easeOut" }}
-            className="overflow-hidden rounded-[2rem]"
-          >
-            <img
-              src={image11}
-              alt="Jardín de Casa Checo"
-              className="h-[420px] w-full object-cover"
-            />
-          </Motion.div>
-
-          <Motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.18 }}
-            transition={{ duration: 0.75, delay: 0.08, ease: "easeOut" }}
-            className="overflow-hidden rounded-[2rem]"
-          >
-            <img
-              src={image12}
-              alt="Entrada e interior de Casa Checo"
-              className="h-[420px] w-full object-cover"
-            />
-          </Motion.div>
-
-          <Motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.18 }}
-            transition={{ duration: 0.75, delay: 0.16, ease: "easeOut" }}
-            className="overflow-hidden rounded-[2rem]"
-          >
-            <img
-              src={image15}
-              alt="Barra e interior cálido de Casa Checo"
-              className="h-[420px] w-full object-cover"
-            />
-          </Motion.div>
+          {images.map((image, index) => (
+            <Motion.div
+              key={image.alt}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{
+                duration: 0.75,
+                delay: index * 0.08,
+                ease: "easeOut",
+              }}
+              whileHover={{ y: -4 }}
+              className="group overflow-hidden rounded-[2rem]"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="h-[320px] w-full object-cover transition duration-500 group-hover:scale-[1.04] sm:h-[380px] lg:h-[420px]"
+              />
+            </Motion.div>
+          ))}
         </div>
       </div>
     </section>

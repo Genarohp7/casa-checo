@@ -24,9 +24,26 @@ body {
   background-color: var(--color-cream);
   color: var(--color-brown);
   font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img {
   display: block;
   max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background-color: rgba(207, 134, 33, 0.22);
+  color: var(--color-brown);
 }

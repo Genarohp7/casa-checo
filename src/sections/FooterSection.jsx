@@ -24,7 +24,7 @@ const socialLinks = [
 function FooterSection() {
   return (
     <footer
-      className="px-6 pb-10 pt-24 sm:px-10 md:px-14"
+      className="px-6 pb-8 pt-24 sm:px-10 md:px-14"
       style={{ backgroundColor: "#f3ead8" }}
     >
       <div
