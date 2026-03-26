@@ -1,4 +1,6 @@
-import { motion as Motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { motion as Motion, AnimatePresence } from "motion/react";
+import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.svg";
 
 const links = [
@@ -9,56 +11,162 @@ const links = [
 ];
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  const handleCloseMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <Motion.header
-      initial={{ opacity: 0, y: -18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      className="fixed left-0 top-0 z-50 w-full px-4 pt-4 sm:px-6"
-    >
-      <div
-        className="mx-auto flex max-w-7xl items-center justify-between rounded-full border px-4 py-3 shadow-lg backdrop-blur-xl sm:px-6"
-        style={{
-          backgroundColor: "rgba(24, 35, 107, 0.58)",
-          borderColor: "rgba(230, 221, 188, 0.14)",
-          boxShadow: "0 10px 30px rgba(0, 0, 0, 0.12)",
-        }}
+    <>
+      <Motion.header
+        initial={{ opacity: 0, y: -18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="fixed left-0 top-0 z-50 w-full px-4 pt-4 sm:px-6"
       >
-        <a href="#top" className="flex items-center gap-3">
-          <img src={logo} alt="Casa Checo" className="h-9 w-auto sm:h-10" />
-        </a>
-
-        <nav className="hidden items-center gap-6 lg:flex">
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-xs uppercase tracking-[0.24em] transition duration-300 hover:opacity-100"
-              style={{
-                color: "#fff8eb",
-                opacity: 0.82,
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        <a
-          href="#ubicacion"
-          className="inline-flex items-center rounded-full px-3 py-2 text-[10px] uppercase tracking-[0.2em] sm:px-5 sm:text-[11px]"
+        <div
+          className="mx-auto flex max-w-7xl items-center justify-between rounded-full border px-4 py-3 shadow-lg backdrop-blur-xl sm:px-6"
           style={{
-            backgroundColor: "var(--color-accent)",
-            color: "#fff8eb",
-            fontFamily: "var(--font-body)",
-            boxShadow: "0 8px 20px rgba(207, 134, 33, 0.25)",
+            backgroundColor: "rgba(24, 35, 107, 0.58)",
+            borderColor: "rgba(230, 221, 188, 0.14)",
+            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.12)",
           }}
         >
-          Visítanos
-        </a>
-      </div>
-    </Motion.header>
+          <a href="#top" className="flex items-center gap-3" onClick={handleCloseMenu}>
+            <img src={logo} alt="Casa Checo" className="h-9 w-auto sm:h-10" />
+          </a>
+
+          <nav className="hidden items-center gap-6 lg:flex">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-xs uppercase tracking-[0.24em] transition duration-300 hover:opacity-100"
+                style={{
+                  color: "#fff8eb",
+                  opacity: 0.82,
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            <a
+              href="#ubicacion"
+              className="hidden items-center rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.2em] lg:inline-flex"
+              style={{
+                backgroundColor: "var(--color-accent)",
+                color: "#fff8eb",
+                fontFamily: "var(--font-body)",
+                boxShadow: "0 8px 20px rgba(207, 134, 33, 0.25)",
+              }}
+            >
+              Visítanos
+            </a>
+
+            <button
+              type="button"
+              aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={isOpen}
+              onClick={() => setIsOpen((prev) => !prev)}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border lg:hidden"
+              style={{
+                borderColor: "rgba(230, 221, 188, 0.18)",
+                backgroundColor: "rgba(230, 221, 188, 0.08)",
+                color: "#fff8eb",
+              }}
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+      </Motion.header>
+
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <Motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="fixed inset-0 z-40 bg-black/45 backdrop-blur-sm lg:hidden"
+              onClick={handleCloseMenu}
+            />
+
+            <Motion.aside
+              initial={{ opacity: 0, y: -24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -24 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="fixed left-4 right-4 top-20 z-50 rounded-[2rem] border p-6 shadow-2xl lg:hidden"
+              style={{
+                backgroundColor: "rgba(24, 35, 107, 0.96)",
+                borderColor: "rgba(230, 221, 188, 0.14)",
+              }}
+            >
+              <div className="flex flex-col gap-3">
+                {links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={handleCloseMenu}
+                    className="rounded-2xl px-4 py-4 text-sm uppercase tracking-[0.22em] transition"
+                    style={{
+                      color: "#fff8eb",
+                      backgroundColor: "rgba(230, 221, 188, 0.06)",
+                      fontFamily: "var(--font-body)",
+                    }}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+
+              <a
+                href="#ubicacion"
+                onClick={handleCloseMenu}
+                className="mt-5 inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-[11px] uppercase tracking-[0.22em]"
+                style={{
+                  backgroundColor: "var(--color-accent)",
+                  color: "#fff8eb",
+                  fontFamily: "var(--font-body)",
+                  boxShadow: "0 8px 20px rgba(207, 134, 33, 0.25)",
+                }}
+              >
+                Visítanos
+              </a>
+            </Motion.aside>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
