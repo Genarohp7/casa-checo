@@ -1,22 +1,23 @@
 import { motion as Motion } from "motion/react";
-import { Globe, MapPin, MessageCircle } from "lucide-react";
+import { MapPin } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import logo from "../assets/logo.svg";
 
 const socialLinks = [
   {
     name: "Instagram",
     href: "https://www.instagram.com/casacheco_restaurante",
-    icon: Globe,
+    icon: FaInstagram,
   },
   {
     name: "Facebook",
     href: "#",
-    icon: Globe,
+    icon: FaFacebookF,
   },
   {
     name: "WhatsApp",
     href: "#",
-    icon: MessageCircle,
+    icon: FaWhatsapp,
   },
 ];
 
@@ -79,7 +80,7 @@ function FooterSection() {
                       color: "#fff8eb",
                     }}
                   >
-                    <Icon size={20} />
+                    <Icon size={19} />
                   </a>
                 );
               })}
