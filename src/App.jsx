@@ -6,6 +6,7 @@ import ExperienceSection from "./sections/ExperienceSection";
 import SpaceSection from "./sections/SpaceSection";
 import PromotionsSection from "./sections/PromotionsSection";
 import VisitSection from "./sections/VisitSection";
+import AtmosphereSection from "./sections/AtmosphereSection";
 import FooterSection from "./sections/FooterSection";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <SpaceSection />
         <PromotionsSection />
         <VisitSection />
+        <AtmosphereSection />
         <FooterSection />
       </PageLayout>
     </SmoothScroll>
