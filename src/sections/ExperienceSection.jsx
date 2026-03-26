@@ -21,8 +21,9 @@ const items = [
 
 function ExperienceSection() {
   return (
-    <section
-      className="relative overflow-hidden px-6 py-24 sm:px-10 md:px-14"
+  <section
+  id="experiencia"
+  className="relative overflow-hidden px-6 py-24 sm:px-10 md:px-14"
       style={{ backgroundColor: "var(--color-cream)" }}
     >
       <div

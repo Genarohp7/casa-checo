@@ -1,4 +1,5 @@
 import SmoothScroll from "./components/SmoothScroll";
+import Navbar from "./components/Navbar";
 import PageLayout from "./components/PageLayout";
 import HeroSection from "./sections/HeroSection";
 import ExperienceSection from "./sections/ExperienceSection";
@@ -11,6 +12,7 @@ function App() {
   return (
     <SmoothScroll>
       <PageLayout>
+        <Navbar />
         <HeroSection />
         <ExperienceSection />
         <SpaceSection />

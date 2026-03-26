@@ -5,7 +5,7 @@ import logo from "../assets/logo.svg";
 
 function HeroSection() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section id="top" className="relative min-h-screen overflow-hidden">
       <div className="absolute inset-0">
         <img
           src={heroImage}

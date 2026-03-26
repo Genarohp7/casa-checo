@@ -5,8 +5,9 @@ import image16 from "../assets/16.jpeg";
 
 function SpaceSection() {
   return (
-    <section
-      className="px-6 py-24 sm:px-10 md:px-14"
+  <section
+  id="espacio"
+  className="px-6 py-24 sm:px-10 md:px-14"
       style={{ backgroundColor: "var(--color-primary)" }}
     >
       <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
