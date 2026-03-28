@@ -1,5 +1,6 @@
 import { motion as Motion } from "motion/react";
 import { ArrowRight, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "../assets/14.jpeg";
 import logo from "../assets/logo.svg";
 
@@ -70,8 +71,20 @@ function HeroSection() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.85, delay: 0.4, ease: "easeOut" }}
-            className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
           >
+            <Link
+              to="/menu"
+              className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm text-[#fff8eb] shadow-lg"
+              style={{
+                backgroundColor: "var(--color-primary)",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Ver menú
+              <ArrowRight size={16} />
+            </Link>
+
             <Motion.a
               href="#ubicacion"
               whileHover={{ scale: 1.03 }}

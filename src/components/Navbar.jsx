@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion as Motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 const links = [
-  { label: "Experiencia", href: "#experiencia" },
-  { label: "Espacio", href: "#espacio" },
-  { label: "Promociones", href: "#promociones" },
-  { label: "Ubicación", href: "#ubicacion" },
+  { label: "Experiencia", href: "#experiencia", type: "anchor" },
+  { label: "Espacio", href: "#espacio", type: "anchor" },
+  { label: "Promociones", href: "#promociones", type: "anchor" },
+  { label: "Ubicación", href: "#ubicacion", type: "anchor" },
 ];
 
 function Navbar() {
@@ -60,6 +61,18 @@ function Navbar() {
           </a>
 
           <nav className="hidden items-center gap-6 lg:flex">
+            <Link
+              to="/menu"
+              className="text-xs uppercase tracking-[0.24em] transition duration-300 hover:opacity-100"
+              style={{
+                color: "#fff8eb",
+                opacity: 0.82,
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Menú
+            </Link>
+
             {links.map((link) => (
               <a
                 key={link.label}
@@ -77,6 +90,19 @@ function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <Link
+              to="/menu"
+              className="hidden items-center rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.2em] lg:inline-flex"
+              style={{
+                border: "1px solid rgba(230, 221, 188, 0.2)",
+                color: "#fff8eb",
+                fontFamily: "var(--font-body)",
+                backgroundColor: "rgba(230, 221, 188, 0.08)",
+              }}
+            >
+              Menú
+            </Link>
+
             <a
               href="#ubicacion"
               className="hidden items-center rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.2em] lg:inline-flex"
@@ -132,6 +158,19 @@ function Navbar() {
               }}
             >
               <div className="flex flex-col gap-3">
+                <Link
+                  to="/menu"
+                  onClick={handleCloseMenu}
+                  className="rounded-2xl px-4 py-4 text-sm uppercase tracking-[0.22em] transition"
+                  style={{
+                    color: "#fff8eb",
+                    backgroundColor: "rgba(230, 221, 188, 0.1)",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  Menú
+                </Link>
+
                 {links.map((link) => (
                   <a
                     key={link.label}
