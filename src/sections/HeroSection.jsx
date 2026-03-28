@@ -85,10 +85,9 @@ function HeroSection() {
               <ArrowRight size={16} />
             </Link>
 
-            <Motion.a
-              href="#ubicacion"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
+            <Link
+              to="/"
+              state={{ scrollTo: "ubicacion" }}
               className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm text-[#fff8eb] shadow-lg"
               style={{
                 backgroundColor: "var(--color-accent)",
@@ -97,12 +96,11 @@ function HeroSection() {
             >
               Ver ubicación
               <MapPin size={16} />
-            </Motion.a>
+            </Link>
 
-            <Motion.a
-              href="#promociones"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
+            <Link
+              to="/"
+              state={{ scrollTo: "promociones" }}
               className="inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3 text-sm text-[#fff8eb] backdrop-blur-sm"
               style={{
                 borderColor: "rgba(230, 221, 188, 0.35)",
@@ -112,7 +110,7 @@ function HeroSection() {
             >
               Ver promociones
               <ArrowRight size={16} />
-            </Motion.a>
+            </Link>
           </Motion.div>
         </div>
       </div>

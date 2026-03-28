@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import PageLayout from "../components/PageLayout";
 import HeroSection from "../sections/HeroSection";
@@ -9,6 +11,22 @@ import AtmosphereSection from "../sections/AtmosphereSection";
 import FooterSection from "../sections/FooterSection";
 
 function HomePage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const targetId = location.state?.scrollTo;
+
+    if (!targetId) return;
+
+    const element = document.getElementById(targetId);
+
+    if (element) {
+      requestAnimationFrame(() => {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, [location]);
+
   return (
     <PageLayout>
       <Navbar />

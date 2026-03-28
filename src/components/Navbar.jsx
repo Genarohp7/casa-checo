@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 const links = [
-  { label: "Experiencia", href: "#experiencia", type: "anchor" },
-  { label: "Espacio", href: "#espacio", type: "anchor" },
-  { label: "Promociones", href: "#promociones", type: "anchor" },
-  { label: "Ubicación", href: "#ubicacion", type: "anchor" },
+  { label: "Experiencia", section: "experiencia" },
+  { label: "Espacio", section: "espacio" },
+  { label: "Promociones", section: "promociones" },
+  { label: "Ubicación", section: "ubicacion" },
 ];
 
 function Navbar() {
@@ -56,27 +56,23 @@ function Navbar() {
             boxShadow: "0 10px 30px rgba(0, 0, 0, 0.12)",
           }}
         >
-          <a href="#top" className="flex items-center gap-3" onClick={handleCloseMenu}>
+          <Link
+            to="/"
+            state={{ scrollTo: "top" }}
+            className="flex items-center gap-3"
+            onClick={handleCloseMenu}
+          >
             <img src={logo} alt="Casa Checo" className="h-9 w-auto sm:h-10" />
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-6 lg:flex">
-            <Link
-              to="/menu"
-              className="text-xs uppercase tracking-[0.24em] transition duration-300 hover:opacity-100"
-              style={{
-                color: "#fff8eb",
-                opacity: 0.82,
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              Menú
-            </Link>
+   
 
             {links.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to="/"
+                state={{ scrollTo: link.section }}
                 className="text-xs uppercase tracking-[0.24em] transition duration-300 hover:opacity-100"
                 style={{
                   color: "#fff8eb",
@@ -85,7 +81,7 @@ function Navbar() {
                 }}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -103,8 +99,9 @@ function Navbar() {
               Menú
             </Link>
 
-            <a
-              href="#ubicacion"
+            <Link
+              to="/"
+              state={{ scrollTo: "ubicacion" }}
               className="hidden items-center rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.2em] lg:inline-flex"
               style={{
                 backgroundColor: "var(--color-accent)",
@@ -114,7 +111,7 @@ function Navbar() {
               }}
             >
               Visítanos
-            </a>
+            </Link>
 
             <button
               type="button"
@@ -172,9 +169,10 @@ function Navbar() {
                 </Link>
 
                 {links.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
-                    href={link.href}
+                    to="/"
+                    state={{ scrollTo: link.section }}
                     onClick={handleCloseMenu}
                     className="rounded-2xl px-4 py-4 text-sm uppercase tracking-[0.22em] transition"
                     style={{
@@ -184,12 +182,13 @@ function Navbar() {
                     }}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
 
-              <a
-                href="#ubicacion"
+              <Link
+                to="/"
+                state={{ scrollTo: "ubicacion" }}
                 onClick={handleCloseMenu}
                 className="mt-5 inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-[11px] uppercase tracking-[0.22em]"
                 style={{
@@ -200,7 +199,7 @@ function Navbar() {
                 }}
               >
                 Visítanos
-              </a>
+              </Link>
             </Motion.aside>
           </>
         )}
