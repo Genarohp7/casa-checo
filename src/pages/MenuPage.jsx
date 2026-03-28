@@ -43,11 +43,11 @@ function MenuPage() {
 
   return (
     <main
-      className="min-h-screen px-4 pb-12 pt-24"
+      className="min-h-screen px-3 pb-8 pt-20 sm:px-4 sm:pb-12 sm:pt-24"
       style={{ backgroundColor: "var(--color-cream)" }}
     >
       <div className="mx-auto max-w-5xl">
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-4 flex items-center justify-between sm:mb-6">
           <Link
             to="/"
             className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm"
@@ -61,7 +61,7 @@ function MenuPage() {
           </Link>
 
           <div
-            className="text-xs tracking-[0.3em]"
+            className="text-[10px] tracking-[0.28em] sm:text-xs sm:tracking-[0.3em]"
             style={{ color: "var(--color-brown)" }}
           >
             {currentPage + 1} / {pages.length}
@@ -86,13 +86,13 @@ function MenuPage() {
 
           <div
             {...handlers}
-            className="overflow-hidden rounded-2xl shadow-xl"
+            className="w-full overflow-hidden rounded-[1.35rem] shadow-xl sm:rounded-2xl"
           >
             <img
               key={currentPage}
               src={pages[currentPage]}
               alt={`Menú página ${currentPage + 1}`}
-              className="max-h-[80vh] w-full object-contain transition-all duration-300 ease-in-out"
+              className="h-auto max-h-[82svh] w-full object-contain transition-all duration-300 ease-in-out sm:max-h-[84vh]"
             />
           </div>
 
@@ -112,7 +112,7 @@ function MenuPage() {
           </button>
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-2">
+        <div className="mt-4 flex items-center justify-center gap-2 sm:mt-6">
           {pages.map((_, index) => (
             <button
               key={index}
