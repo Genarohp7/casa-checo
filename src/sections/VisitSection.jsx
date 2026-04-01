@@ -3,8 +3,8 @@ import { Clock3, MapPin, Navigation } from "lucide-react";
 
 const schedule = [
   { days: "Lunes a miércoles", hours: "9:00 am — 7:00 pm" },
-  { days: "Jueves a sábado", hours: "7:00 am — 2:00 am" },
-  { days: "Domingo", hours: "7:00 am — 6:00 pm" },
+  { days: "Jueves a sábado", hours: "9:00 am — 2:00 am" },
+  { days: "Domingo", hours: "8:00 am — 6:00 pm" },
 ];
 
 function VisitSection() {
