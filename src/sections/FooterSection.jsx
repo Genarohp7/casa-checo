@@ -16,7 +16,7 @@ const socialLinks = [
   },
   {
     name: "WhatsApp",
-    href: "#",
+    href: "https://wa.me/525549453061",
     icon: FaWhatsapp,
   },
 ];
@@ -66,13 +66,14 @@ function FooterSection() {
             <div className="mt-5 flex flex-wrap gap-3">
               {socialLinks.map((item) => {
                 const Icon = item.icon;
+                const isExternal = item.href !== "#";
 
                 return (
                   <a
                     key={item.name}
                     href={item.href}
-                    target={item.href !== "#" ? "_blank" : undefined}
-                    rel={item.href !== "#" ? "noreferrer" : undefined}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noreferrer" : undefined}
                     aria-label={item.name}
                     title={item.name}
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border transition-transform duration-300 hover:scale-[1.05]"
