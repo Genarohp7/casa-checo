@@ -184,17 +184,20 @@ function VisitSection() {
             href="https://www.google.com/maps/place/Casa+Checo/@19.2973656,-99.1824757,19z/data=!4m6!3m5!1s0x85ce012337126625:0x1af168ec3a392ce4!8m2!3d19.2970377!4d-99.1823669!16s%2Fg%2F11yxy3mtll?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noreferrer"
-            whileHover={{ scale: 1.03 }}
+            whileHover={{ scale: 1.04, y: -1 }}
             whileTap={{ scale: 0.98 }}
-            className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm shadow-lg"
+            className="mt-10 inline-flex items-center gap-3 rounded-full px-7 py-4 text-base font-medium shadow-xl"
             style={{
               backgroundColor: "var(--color-primary)",
               color: "#fff8eb",
               fontFamily: "var(--font-body)",
+              boxShadow: "0 14px 30px rgba(24, 35, 107, 0.28)",
             }}
           >
             Cómo llegar
-            <Navigation size={16} color="#fff8eb" />
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+              <Navigation size={17} color="#fff8eb" />
+            </span>
           </Motion.a>
         </Motion.div>
       </div>
