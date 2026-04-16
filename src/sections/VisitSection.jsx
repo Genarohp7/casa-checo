@@ -118,7 +118,7 @@ function VisitSection() {
               fontFamily: "var(--font-body)",
             }}
           >
-            Encuéntranos en Av. San Fernando 649, dentro de Plaza Cuicuilco, en
+            Encuéntranos en Av. San Fernando 649 Local A, dentro de Plaza Cuicuilco, en
             un espacio con cocina, barra, jardín y ambiente con carácter.
           </p>
 

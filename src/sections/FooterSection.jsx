@@ -119,7 +119,7 @@ function FooterSection() {
                   className="mt-1 text-xs leading-6 text-[#fff8eb]/74 sm:text-sm"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  Av. San Fernando 649
+                  Av. San Fernando 649 Local A
                 </p>
               </div>
             </div>
