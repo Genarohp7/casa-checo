@@ -38,14 +38,7 @@ function SpaceSection() {
             y ambiente propio.
           </h2>
 
-          <p
-            className="mt-6 max-w-xl text-sm leading-7 text-[#fff8eb]/78 sm:text-base"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            Casa Checo reúne interior cálido, jardín y una atmósfera pensada
-            para disfrutar con calma, en pareja, con amigos o en familia.
-          </p>
-
+       
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <div
               className="rounded-[1.5rem] border px-5 py-4"

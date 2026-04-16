@@ -54,16 +54,7 @@ function AtmosphereSection() {
             invita a quedarse.
           </h2>
 
-          <p
-            className="mt-6 text-sm leading-7 sm:text-base"
-            style={{
-              color: "rgba(47, 27, 5, 0.78)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            Interior cálido, jardín y una atmósfera cuidada para desayunar,
-            comer o disfrutar la barra con calma.
-          </p>
+        
         </Motion.div>
 
         <div className="mt-14 grid gap-4 lg:grid-cols-[1fr_1.15fr_0.95fr]">

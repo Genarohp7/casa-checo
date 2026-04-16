@@ -53,13 +53,7 @@ function FooterSection() {
                   Nos vemos en Casa Checo.
                 </h2>
 
-                <p
-                  className="mt-2 max-w-2xl text-xs leading-6 text-[#fff8eb]/78 sm:text-sm"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  Un restaurante para desayunar, comer y disfrutar un espacio
-                  con jardín, barra y una atmósfera con identidad propia.
-                </p>
+              
               </div>
             </div>
 
