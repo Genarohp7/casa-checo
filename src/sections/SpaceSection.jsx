@@ -5,9 +5,9 @@ import image16 from "../assets/16.jpeg";
 
 function SpaceSection() {
   return (
-  <section
-  id="espacio"
-  className="px-6 py-24 sm:px-10 md:px-14"
+    <section
+      id="espacio"
+      className="px-6 py-24 sm:px-10 md:px-14"
       style={{ backgroundColor: "var(--color-primary)" }}
     >
       <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
@@ -19,7 +19,10 @@ function SpaceSection() {
         >
           <p
             className="mb-4 text-[11px] uppercase tracking-[0.35em]"
-            style={{ color: "rgba(230, 221, 188, 0.82)" }}
+            style={{
+              color: "rgba(230, 221, 188, 0.82)",
+              fontFamily: "var(--font-body)",
+            }}
           >
             El espacio
           </p>
@@ -28,21 +31,19 @@ function SpaceSection() {
             className="text-4xl leading-tight text-[#fff8eb] sm:text-5xl"
             style={{ fontFamily: "var(--font-title)" }}
           >
-            Un lugar con
+            Un restaurante con
             <br />
-            luz, madera,
+            jardín, barra
             <br />
-            jardín y carácter.
+            y ambiente propio.
           </h2>
 
           <p
             className="mt-6 max-w-xl text-sm leading-7 text-[#fff8eb]/78 sm:text-base"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            Casa Checo combina interiores amplios, materiales cálidos, barra,
-            vegetación y un jardín que cambia por completo la experiencia. Es un
-            lugar que se siente abierto, relajado y con mucha mejor vibra de la
-            que promete una foto.
+            Casa Checo reúne interior cálido, jardín y una atmósfera pensada
+            para disfrutar con calma, en pareja, con amigos o en familia.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -63,7 +64,7 @@ function SpaceSection() {
                 className="mt-2 text-sm text-[#fff8eb]"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                Interior cálido + exterior verde
+                Interior cálido y jardín
               </p>
             </div>
 
@@ -78,13 +79,13 @@ function SpaceSection() {
                 className="text-[11px] uppercase tracking-[0.28em] text-[#fff8eb]/60"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                Sensación
+                Experiencia
               </p>
               <p
                 className="mt-2 text-sm text-[#fff8eb]"
                 style={{ fontFamily: "var(--font-body)" }}
               >
-                Espacio para quedarte a gusto
+                Un lugar para disfrutar
               </p>
             </div>
           </div>
@@ -115,7 +116,7 @@ function SpaceSection() {
             >
               <img
                 src={image10}
-                alt="Jardín y terraza de Casa Checo"
+                alt="Jardín de Casa Checo"
                 className="h-[205px] w-full object-cover"
               />
             </Motion.div>

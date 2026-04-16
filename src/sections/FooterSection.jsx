@@ -57,8 +57,8 @@ function FooterSection() {
                   className="mt-2 max-w-2xl text-xs leading-6 text-[#fff8eb]/78 sm:text-sm"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
-                  Un lugar para desayunar, comer, tomar algo y disfrutar un
-                  ambiente con carácter, jardín, barra y buena atención.
+                  Un restaurante para desayunar, comer y disfrutar un espacio
+                  con jardín, barra y una atmósfera con identidad propia.
                 </p>
               </div>
             </div>
@@ -137,7 +137,7 @@ function FooterSection() {
                 fontFamily: "var(--font-body)",
               }}
             >
-              Casa Checo — buena comida, buenos tragos, mejores momentos
+              Casa Checo — cocina, barra y ambiente con carácter
             </div>
           </Motion.div>
         </div>

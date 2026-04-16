@@ -8,7 +8,7 @@ const promotions = [
     eyebrow: "Promo destacada",
     title: "Menú ejecutivo $199",
     description:
-      "Disponible de 13:00 a 17:00. Una opción completa para disfrutar comida bien hecha en un espacio que sí se antoja.",
+      "Disponible de 13:00 a 17:00. Una opción práctica para comer bien entre semana en Casa Checo.",
     footer: "Todos los días",
     bg: "var(--color-accent)",
     text: "#fff8eb",
@@ -19,8 +19,8 @@ const promotions = [
     eyebrow: "Todos los días",
     title: "2x1 en Aperol Spritz",
     description:
-      "Una promo pensada para alargar la charla, brindar a gusto y disfrutar el ambiente de Casa Checo con mejor pretexto.",
-    footer: "Buenos tragos, mejores momentos",
+      "Una promoción ideal para disfrutar la barra y acompañar la tarde en un ambiente cuidado.",
+    footer: "Promoción vigente",
     bg: "var(--color-primary)",
     text: "#fff8eb",
     border: "rgba(230, 221, 188, 0.14)",
@@ -30,8 +30,8 @@ const promotions = [
     eyebrow: "Casa Checo",
     title: "Abierto toda la semana",
     description:
-      "Desayunos, comida, tragos y un lugar con jardín, barra e interior amplio para ir entre semana o alargar el plan el fin.",
-    footer: "Horarios completos más abajo",
+      "Desayunos, comida y barra en un espacio con jardín para disfrutar entre semana o el fin de semana.",
+    footer: "Consulta horarios",
     bg: "rgba(255,255,255,0.58)",
     text: "var(--color-brown)",
     border: "rgba(47, 27, 5, 0.1)",
@@ -57,9 +57,12 @@ function PromotionsSection() {
         >
           <p
             className="mb-4 text-[11px] uppercase tracking-[0.35em]"
-            style={{ color: "var(--color-terra)" }}
+            style={{
+              color: "var(--color-terra)",
+              fontFamily: "var(--font-body)",
+            }}
           >
-            Promociones y momentos
+            Promociones
           </p>
 
           <h2
@@ -69,21 +72,20 @@ function PromotionsSection() {
               fontFamily: "var(--font-title)",
             }}
           >
-            Pretextos buenos
+            Promociones para
             <br />
-            para volver.
+            disfrutar Casa Checo.
           </h2>
 
           <p
-            className="mt-6 max-w-2xl text-sm leading-7 sm:text-base"
+            className="mt-5 max-w-2xl text-sm leading-7 sm:text-base"
             style={{
               color: "rgba(47, 27, 5, 0.78)",
               fontFamily: "var(--font-body)",
             }}
           >
-            Casa Checo también se disfruta por esos detalles que vuelven más
-            fácil decir “vamos”. Desde una buena comida entre semana hasta un
-            trago para cerrar el día con calma.
+            Opciones pensadas para comer bien, disfrutar la barra y volver
+            cuando se antoje.
           </p>
         </Motion.div>
 

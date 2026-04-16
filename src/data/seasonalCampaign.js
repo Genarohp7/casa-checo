@@ -1,9 +1,9 @@
 const seasonalCampaign = {
   isEnabled: true,
-  eyebrow: "Especial de temporada",
-  title: "Vive el Mundial en Casa Checo",
+  eyebrow: "Temporada especial",
+  title: "El Mundial se vive en Casa Checo",
   description:
-    "Partidos, buen ambiente, comida, tragos y un espacio ideal para disfrutar cada encuentro con mejor compañía.",
+    "Sigue cada partido en un espacio con cocina, barra y ambiente ideal para compartir.",
   ctaLabel: "Ver ubicación",
   ctaTarget: "ubicacion",
 };

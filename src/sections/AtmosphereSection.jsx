@@ -39,7 +39,7 @@ function AtmosphereSection() {
               fontFamily: "var(--font-body)",
             }}
           >
-            El ambiente
+            Ambiente
           </p>
 
           <h2
@@ -49,9 +49,9 @@ function AtmosphereSection() {
               fontFamily: "var(--font-title)",
             }}
           >
-            Un lugar que cambia
+            Un espacio que
             <br />
-            cómo se siente el plan.
+            invita a quedarse.
           </h2>
 
           <p
@@ -61,9 +61,8 @@ function AtmosphereSection() {
               fontFamily: "var(--font-body)",
             }}
           >
-            Casa Checo tiene esa mezcla rara y buena entre calma, luz, diseño y
-            naturaleza. Se presta para una comida tranquila, un trago largo, una
-            reunión casual o simplemente una mejor pausa en el día.
+            Interior cálido, jardín y una atmósfera cuidada para desayunar,
+            comer o disfrutar la barra con calma.
           </p>
         </Motion.div>
 

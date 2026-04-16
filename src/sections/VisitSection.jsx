@@ -41,9 +41,9 @@ function VisitSection() {
             className="text-4xl leading-tight text-[#fff8eb] sm:text-5xl"
             style={{ fontFamily: "var(--font-title)" }}
           >
-            Ven cuando
+            Horarios de
             <br />
-            mejor te acomode.
+            Casa Checo.
           </h2>
 
           <div className="mt-8 space-y-4">
@@ -106,9 +106,9 @@ function VisitSection() {
               fontFamily: "var(--font-title)",
             }}
           >
-            Plaza Cuicuilco,
+            Casa Checo,
             <br />
-            Av. San Fernando 649
+            al sur de CDMX.
           </h2>
 
           <p
@@ -118,11 +118,39 @@ function VisitSection() {
               fontFamily: "var(--font-body)",
             }}
           >
-            Un espacio para desayunar, comer, tomar algo o simplemente alargar
-            el plan en un lugar con jardín, barra e interior amplio.
+            Encuéntranos en Av. San Fernando 649, dentro de Plaza Cuicuilco, en
+            un espacio con cocina, barra, jardín y ambiente con carácter.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div
+              className="rounded-[1.5rem] border px-5 py-4"
+              style={{
+                borderColor: "rgba(47, 27, 5, 0.1)",
+                backgroundColor: "rgba(255,255,255,0.45)",
+              }}
+            >
+              <p
+                className="text-[11px] uppercase tracking-[0.28em]"
+                style={{
+                  color: "rgba(47, 27, 5, 0.5)",
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                Dirección
+              </p>
+
+              <p
+                className="mt-2 text-sm"
+                style={{
+                  color: "var(--color-brown)",
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                Av. San Fernando 649
+              </p>
+            </div>
+
             <div
               className="rounded-[1.5rem] border px-5 py-4"
               style={{
@@ -147,55 +175,27 @@ function VisitSection() {
                   fontFamily: "var(--font-body)",
                 }}
               >
-                Sur de la CDMX
-              </p>
-            </div>
-
-            <div
-              className="rounded-[1.5rem] border px-5 py-4"
-              style={{
-                borderColor: "rgba(47, 27, 5, 0.1)",
-                backgroundColor: "rgba(255,255,255,0.45)",
-              }}
-            >
-              <p
-                className="text-[11px] uppercase tracking-[0.28em]"
-                style={{
-                  color: "rgba(47, 27, 5, 0.5)",
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                Ambiente
-              </p>
-
-              <p
-                className="mt-2 text-sm"
-                style={{
-                  color: "var(--color-brown)",
-                  fontFamily: "var(--font-body)",
-                }}
-              >
-                Casual, cálido y con carácter
+                Cuicuilco, Tlalpan
               </p>
             </div>
           </div>
 
-        <Motion.a
-  href="https://www.google.com/maps/place/Casa+Checo/@19.2973656,-99.1824757,19z/data=!4m6!3m5!1s0x85ce012337126625:0x1af168ec3a392ce4!8m2!3d19.2970377!4d-99.1823669!16s%2Fg%2F11yxy3mtll?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D"
-  target="_blank"
-  rel="noreferrer"
-  whileHover={{ scale: 1.03 }}
-  whileTap={{ scale: 0.98 }}
-  className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm shadow-lg"
-  style={{
-    backgroundColor: "var(--color-primary)",
-    color: "#fff8eb",
-    fontFamily: "var(--font-body)",
-  }}
->
-  Cómo llegar
-  <Navigation size={16} color="#fff8eb" />
-</Motion.a>
+          <Motion.a
+            href="https://www.google.com/maps/place/Casa+Checo/@19.2973656,-99.1824757,19z/data=!4m6!3m5!1s0x85ce012337126625:0x1af168ec3a392ce4!8m2!3d19.2970377!4d-99.1823669!16s%2Fg%2F11yxy3mtll?entry=ttu&g_ep=EgoyMDI2MDMyMy4xIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm shadow-lg"
+            style={{
+              backgroundColor: "var(--color-primary)",
+              color: "#fff8eb",
+              fontFamily: "var(--font-body)",
+            }}
+          >
+            Cómo llegar
+            <Navigation size={16} color="#fff8eb" />
+          </Motion.a>
         </Motion.div>
       </div>
     </section>

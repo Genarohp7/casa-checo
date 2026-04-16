@@ -10,7 +10,7 @@ function HeroSection() {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Casa Checo"
+          alt="Casa Checo, restaurante con jardín y ambiente al sur de la CDMX"
           className="h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-black/42" />
@@ -39,33 +39,36 @@ function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.1, ease: "easeOut" }}
             className="mb-4 text-[11px] uppercase tracking-[0.35em] text-[#e6ddbc]/85 sm:text-xs"
+            style={{ fontFamily: "var(--font-body)" }}
           >
-            Plaza Cuicuilco
+          Restaurante al sur de CDMX · Zona Cuicuilco
           </Motion.p>
 
           <Motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-4xl leading-[1.05] text-[#fff8eb] sm:text-5xl md:text-6xl lg:text-7xl"
-            style={{ fontFamily: "var(--font-title)" }}
-          >
-            Buena comida,
-            <br />
-            buenos tragos,
-            <br />
-            mejores momentos.
-          </Motion.h1>
+  initial={{ opacity: 0, y: 24 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+  className="text-4xl leading-[1.05] text-[#fff8eb] sm:text-5xl md:text-6xl lg:text-7xl"
+  style={{ fontFamily: "var(--font-title)" }}
+>
+  Casa Checo,
+  <br />
+  restaurante con cocina,
+  <br />
+  barra y carácter.
+</Motion.h1>
 
-          <Motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="mt-6 max-w-2xl text-sm leading-7 text-white/78 sm:text-base sm:leading-8"
-          >
-            Un espacio con carácter, luz, jardín y una atmósfera pensada para
-            disfrutar desayunos, comida, tragos y tiempo bien pasado.
-          </Motion.p>
+      <Motion.p
+  initial={{ opacity: 0, y: 24 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+  className="mt-6 max-w-2xl text-sm leading-7 text-white/78 sm:text-base sm:leading-8"
+  style={{ fontFamily: "var(--font-body)" }}
+>
+  Descubre un restaurante al sur de la Ciudad de México ideal para desayunar,
+  comer, disfrutar la barra y pasar un buen momento en un espacio con jardín,
+  atmósfera cuidada y una propuesta con identidad propia.
+</Motion.p>
 
           <Motion.div
             initial={{ opacity: 0, y: 24 }}
