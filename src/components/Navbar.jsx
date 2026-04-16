@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 const links = [
-  { label: "Experiencia", section: "experiencia" },
-  { label: "Espacio", section: "espacio" },
   { label: "Promociones", section: "promociones" },
+  { label: "Espacio", section: "espacio" },
   { label: "Ubicación", section: "ubicacion" },
 ];
 
@@ -66,8 +65,6 @@ function Navbar() {
           </Link>
 
           <nav className="hidden items-center gap-6 lg:flex">
-   
-
             {links.map((link) => (
               <Link
                 key={link.label}
@@ -86,6 +83,19 @@ function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <button
+              type="button"
+              className="hidden items-center whitespace-nowrap rounded-full px-4 py-2 text-[10px] uppercase tracking-[0.14em] lg:inline-flex"
+              style={{
+                border: "1px solid rgba(230, 221, 188, 0.2)",
+                color: "#fff8eb",
+                fontFamily: "var(--font-body)",
+                backgroundColor: "rgba(230, 221, 188, 0.08)",
+              }}
+            >
+              Eventos en Aura
+            </button>
+
             <Link
               to="/menu"
               className="hidden items-center rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.2em] lg:inline-flex"
@@ -155,6 +165,18 @@ function Navbar() {
               }}
             >
               <div className="flex flex-col gap-3">
+                <button
+                  type="button"
+                  className="rounded-2xl px-4 py-4 text-sm uppercase tracking-[0.16em] text-left transition"
+                  style={{
+                    color: "#fff8eb",
+                    backgroundColor: "rgba(230, 221, 188, 0.1)",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  Aura
+                </button>
+
                 <Link
                   to="/menu"
                   onClick={handleCloseMenu}
