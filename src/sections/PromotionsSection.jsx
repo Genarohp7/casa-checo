@@ -1,5 +1,6 @@
 import { motion as Motion } from "motion/react";
 import { Clock3, Martini, UtensilsCrossed } from "lucide-react";
+import SeasonalBanner from "./SeasonalBanner";
 
 const promotions = [
   {
@@ -41,16 +42,18 @@ function PromotionsSection() {
   return (
     <section
       id="promociones"
-      className="px-6 py-24 sm:px-10 md:px-14"
+      className="px-6 py-20 sm:px-10 md:px-14"
       style={{ backgroundColor: "#f3ead8" }}
     >
       <div className="mx-auto max-w-7xl">
+        <SeasonalBanner />
+
         <Motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.75, ease: "easeOut" }}
-          className="max-w-3xl"
+          className="mt-10 max-w-3xl"
         >
           <p
             className="mb-4 text-[11px] uppercase tracking-[0.35em]"

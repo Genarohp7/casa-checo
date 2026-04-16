@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import PageLayout from "../components/PageLayout";
 import HeroSection from "../sections/HeroSection";
 import SeasonalBanner from "../sections/SeasonalBanner";
-import ExperienceSection from "../sections/ExperienceSection";
 import SpaceSection from "../sections/SpaceSection";
 import PromotionsSection from "../sections/PromotionsSection";
 import VisitSection from "../sections/VisitSection";
@@ -32,10 +31,8 @@ function HomePage() {
     <PageLayout>
       <Navbar />
       <HeroSection />
-      <SeasonalBanner />
-      <ExperienceSection />
-      <SpaceSection />
       <PromotionsSection />
+      <SpaceSection />
       <VisitSection />
       <AtmosphereSection />
       <FooterSection />
