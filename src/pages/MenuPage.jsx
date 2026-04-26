@@ -1,26 +1,36 @@
-import { useState } from "react";
-import { ArrowLeft, ChevronRight } from "lucide-react";
+import { useMemo, useState } from "react";
+import { motion as Motion } from "motion/react";
+import {
+  ArrowLeft,
+  ChevronRight,
+  Martini,
+  Sparkles,
+  UtensilsCrossed,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import MENU_DATA from "../data/menuData";
 
-function TabButton({ isActive, onClick, children }) {
+function TabButton({ isActive, onClick, icon: Icon, children }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm transition-all duration-300"
+      className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm transition-all duration-300"
       style={{
-        backgroundColor: isActive ? "var(--color-primary)" : "transparent",
+        background: isActive
+          ? "linear-gradient(135deg, rgba(24,35,107,1) 0%, rgba(42,60,160,0.96) 100%)"
+          : "rgba(255,255,255,0.56)",
         color: isActive ? "#fff8eb" : "var(--color-brown)",
         border: isActive
-          ? "1px solid rgba(24, 35, 107, 0.2)"
-          : "1px solid rgba(47, 27, 5, 0.14)",
+          ? "1px solid rgba(24, 35, 107, 0.18)"
+          : "1px solid rgba(47, 27, 5, 0.12)",
         boxShadow: isActive
-          ? "0 10px 24px rgba(24, 35, 107, 0.18)"
-          : "none",
+          ? "0 14px 30px rgba(24, 35, 107, 0.22)"
+          : "0 8px 18px rgba(47, 27, 5, 0.04)",
         fontFamily: "var(--font-body)",
       }}
     >
+      <Icon size={16} />
       {children}
     </button>
   );
@@ -31,12 +41,13 @@ function CategoryChip({ onClick, children }) {
     <button
       type="button"
       onClick={onClick}
-      className="whitespace-nowrap rounded-full px-4 py-2 text-xs uppercase tracking-[0.18em] transition hover:scale-[1.02]"
+      className="whitespace-nowrap rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] transition duration-300 hover:-translate-y-[1px]"
       style={{
-        backgroundColor: "rgba(255,255,255,0.55)",
-        border: "1px solid rgba(47, 27, 5, 0.1)",
+        backgroundColor: "rgba(255,255,255,0.72)",
+        border: "1px solid rgba(47, 27, 5, 0.08)",
         color: "var(--color-brown)",
         fontFamily: "var(--font-body)",
+        boxShadow: "0 8px 18px rgba(47, 27, 5, 0.04)",
       }}
     >
       {children}
@@ -47,44 +58,51 @@ function CategoryChip({ onClick, children }) {
 function StandardItem({ item }) {
   return (
     <article
-      className="flex items-start justify-between gap-4 border-b pb-4"
-      style={{ borderColor: "rgba(47, 27, 5, 0.08)" }}
+      className="rounded-[1.4rem] border px-4 py-4 transition duration-300 hover:-translate-y-[1px]"
+      style={{
+        borderColor: "rgba(47, 27, 5, 0.08)",
+        backgroundColor: "rgba(255,255,255,0.72)",
+        boxShadow: "0 10px 24px rgba(47, 27, 5, 0.035)",
+      }}
     >
-      <div className="min-w-0">
-        <h3
-          className="text-base leading-tight"
-          style={{
-            color: "var(--color-brown)",
-            fontFamily: "var(--font-body)",
-          }}
-        >
-          {item.name}
-          {item.meta ? (
-            <span className="ml-1 text-sm opacity-60">({item.meta})</span>
-          ) : null}
-        </h3>
-
-        {item.description ? (
-          <p
-            className="mt-2 max-w-2xl text-sm leading-6"
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0">
+          <h3
+            className="text-base leading-tight"
             style={{
-              color: "rgba(47, 27, 5, 0.72)",
+              color: "var(--color-brown)",
               fontFamily: "var(--font-body)",
             }}
           >
-            {item.description}
-          </p>
-        ) : null}
-      </div>
+            {item.name}
+            {item.meta ? (
+              <span className="ml-1 text-sm opacity-60">({item.meta})</span>
+            ) : null}
+          </h3>
 
-      <div
-        className="shrink-0 text-base"
-        style={{
-          color: "var(--color-primary)",
-          fontFamily: "var(--font-body)",
-        }}
-      >
-        {item.price}
+          {item.description ? (
+            <p
+              className="mt-2 max-w-2xl text-sm leading-6"
+              style={{
+                color: "rgba(47, 27, 5, 0.72)",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              {item.description}
+            </p>
+          ) : null}
+        </div>
+
+        <div
+          className="shrink-0 rounded-full px-3 py-2 text-sm"
+          style={{
+            backgroundColor: "rgba(24,35,107,0.08)",
+            color: "var(--color-primary)",
+            fontFamily: "var(--font-body)",
+          }}
+        >
+          {item.price}
+        </div>
       </div>
     </article>
   );
@@ -93,82 +111,94 @@ function StandardItem({ item }) {
 function SpiritItem({ item }) {
   return (
     <article
-      className="flex flex-col gap-3 border-b pb-4 sm:flex-row sm:items-start sm:justify-between"
-      style={{ borderColor: "rgba(47, 27, 5, 0.08)" }}
+      className="rounded-[1.5rem] border px-4 py-4 transition duration-300 hover:-translate-y-[1px]"
+      style={{
+        borderColor: "rgba(47, 27, 5, 0.08)",
+        backgroundColor: "rgba(255,255,255,0.72)",
+        boxShadow: "0 10px 24px rgba(47, 27, 5, 0.035)",
+      }}
     >
-      <div className="min-w-0">
-        <h3
-          className="text-base leading-tight"
-          style={{
-            color: "var(--color-brown)",
-            fontFamily: "var(--font-body)",
-          }}
-        >
-          {item.name}
-          {item.meta ? (
-            <span className="ml-1 text-sm opacity-60">({item.meta})</span>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0">
+          <h3
+            className="text-base leading-tight"
+            style={{
+              color: "var(--color-brown)",
+              fontFamily: "var(--font-body)",
+            }}
+          >
+            {item.name}
+            {item.meta ? (
+              <span className="ml-1 text-sm opacity-60">({item.meta})</span>
+            ) : null}
+          </h3>
+
+          {item.description ? (
+            <p
+              className="mt-2 text-sm leading-6"
+              style={{
+                color: "rgba(47, 27, 5, 0.72)",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              {item.description}
+            </p>
           ) : null}
-        </h3>
-
-        {item.description ? (
-          <p
-            className="mt-2 text-sm leading-6"
-            style={{
-              color: "rgba(47, 27, 5, 0.72)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            {item.description}
-          </p>
-        ) : null}
-      </div>
-
-      <div className="grid shrink-0 grid-cols-2 gap-3 sm:min-w-[180px]">
-        <div
-          className="rounded-2xl px-3 py-2 text-center"
-          style={{ backgroundColor: "rgba(24, 35, 107, 0.06)" }}
-        >
-          <div
-            className="text-[10px] uppercase tracking-[0.18em]"
-            style={{
-              color: "rgba(47, 27, 5, 0.55)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            Botella
-          </div>
-          <div
-            className="mt-1 text-sm"
-            style={{
-              color: "var(--color-primary)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            {item.bottlePrice}
-          </div>
         </div>
 
-        <div
-          className="rounded-2xl px-3 py-2 text-center"
-          style={{ backgroundColor: "rgba(207, 134, 33, 0.08)" }}
-        >
+        <div className="grid shrink-0 grid-cols-2 gap-3 sm:min-w-[200px]">
           <div
-            className="text-[10px] uppercase tracking-[0.18em]"
+            className="rounded-[1.2rem] px-3 py-3 text-center"
             style={{
-              color: "rgba(47, 27, 5, 0.55)",
-              fontFamily: "var(--font-body)",
+              backgroundColor: "rgba(24, 35, 107, 0.07)",
+              border: "1px solid rgba(24, 35, 107, 0.08)",
             }}
           >
-            Copa
+            <div
+              className="text-[10px] uppercase tracking-[0.18em]"
+              style={{
+                color: "rgba(47, 27, 5, 0.52)",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Botella
+            </div>
+            <div
+              className="mt-1 text-sm"
+              style={{
+                color: "var(--color-primary)",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              {item.bottlePrice}
+            </div>
           </div>
+
           <div
-            className="mt-1 text-sm"
+            className="rounded-[1.2rem] px-3 py-3 text-center"
             style={{
-              color: "var(--color-primary)",
-              fontFamily: "var(--font-body)",
+              backgroundColor: "rgba(207, 134, 33, 0.09)",
+              border: "1px solid rgba(207, 134, 33, 0.12)",
             }}
           >
-            {item.servePrice}
+            <div
+              className="text-[10px] uppercase tracking-[0.18em]"
+              style={{
+                color: "rgba(47, 27, 5, 0.52)",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Copa
+            </div>
+            <div
+              className="mt-1 text-sm"
+              style={{
+                color: "var(--color-primary)",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              {item.servePrice}
+            </div>
           </div>
         </div>
       </div>
@@ -179,30 +209,29 @@ function SpiritItem({ item }) {
 function SpecialSection({ section }) {
   return (
     <div
-      className="rounded-[1.75rem] border p-6 shadow-sm"
+      className="relative overflow-hidden rounded-[2rem] border p-6 sm:p-7"
       style={{
-        backgroundColor: "rgba(255,255,255,0.56)",
-        borderColor: "rgba(47, 27, 5, 0.1)",
+        background:
+          "linear-gradient(135deg, rgba(24,35,107,0.98) 0%, rgba(24,35,107,0.92) 55%, rgba(207,134,33,0.92) 100%)",
+        borderColor: "rgba(230, 221, 188, 0.14)",
+        boxShadow: "0 20px 40px rgba(47, 27, 5, 0.08)",
       }}
     >
-      <div className="flex items-start justify-between gap-4">
+      <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
+      <div className="absolute bottom-0 left-0 h-24 w-24 rounded-full bg-[#fff8eb]/10 blur-2xl" />
+
+      <div className="relative z-10 flex items-start justify-between gap-4">
         <div>
           <p
-            className="text-[11px] uppercase tracking-[0.3em]"
-            style={{
-              color: "var(--color-terra)",
-              fontFamily: "var(--font-body)",
-            }}
+            className="text-[11px] uppercase tracking-[0.3em] text-[#fff8eb]/72"
+            style={{ fontFamily: "var(--font-body)" }}
           >
             Especial
           </p>
 
           <h2
-            className="mt-3 text-3xl leading-tight"
-            style={{
-              color: "var(--color-brown)",
-              fontFamily: "var(--font-title)",
-            }}
+            className="mt-3 text-3xl leading-tight text-[#fff8eb]"
+            style={{ fontFamily: "var(--font-title)" }}
           >
             {section.title}
           </h2>
@@ -211,8 +240,8 @@ function SpecialSection({ section }) {
         <div
           className="rounded-full px-4 py-2 text-sm"
           style={{
-            backgroundColor: "var(--color-primary)",
-            color: "#fff8eb",
+            backgroundColor: "#fff8eb",
+            color: "var(--color-primary)",
             fontFamily: "var(--font-body)",
           }}
         >
@@ -220,15 +249,15 @@ function SpecialSection({ section }) {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+      <div className="relative z-10 mt-6 grid gap-3 sm:grid-cols-2">
         {section.included.map((item) => (
           <div
             key={item}
-            className="rounded-2xl border px-4 py-3 text-sm"
+            className="rounded-[1.2rem] border px-4 py-3 text-sm"
             style={{
-              borderColor: "rgba(47, 27, 5, 0.08)",
-              backgroundColor: "rgba(243, 234, 216, 0.7)",
-              color: "var(--color-brown)",
+              borderColor: "rgba(255, 248, 235, 0.14)",
+              backgroundColor: "rgba(255,255,255,0.08)",
+              color: "#fff8eb",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -240,54 +269,71 @@ function SpecialSection({ section }) {
   );
 }
 
-function MenuSection({ section }) {
-  return (
-    <section
-      id={section.id}
-      className="scroll-mt-28 rounded-[2rem] border p-6 shadow-sm sm:p-7"
-      style={{
-        backgroundColor: "rgba(255,255,255,0.58)",
-        borderColor: "rgba(47, 27, 5, 0.1)",
-      }}
-    >
-      {section.special ? (
+function MenuSection({ section, index }) {
+  const motionProps = {
+    initial: { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.12 },
+    transition: { duration: 0.55, delay: index * 0.03, ease: "easeOut" },
+  };
+
+  if (section.special) {
+    return (
+      <Motion.section id={section.id} className="scroll-mt-28" {...motionProps}>
         <SpecialSection section={section} />
-      ) : (
-        <>
-          <div className="mb-6">
-            <p
-              className="text-[11px] uppercase tracking-[0.32em]"
-              style={{
-                color: "var(--color-terra)",
-                fontFamily: "var(--font-body)",
-              }}
-            >
-              Casa Checo
-            </p>
+      </Motion.section>
+    );
+  }
 
-            <h2
-              className="mt-3 text-3xl leading-tight sm:text-4xl"
-              style={{
-                color: "var(--color-brown)",
-                fontFamily: "var(--font-title)",
-              }}
-            >
-              {section.title}
-            </h2>
-          </div>
+  return (
+    <Motion.section
+      id={section.id}
+      className="scroll-mt-28 rounded-[2rem] border p-6 sm:p-7"
+      style={{
+        backgroundColor: "rgba(255,255,255,0.5)",
+        borderColor: "rgba(47, 27, 5, 0.08)",
+        boxShadow: "0 14px 30px rgba(47, 27, 5, 0.045)",
+      }}
+      {...motionProps}
+    >
+      <div className="mb-6">
+        <div className="flex items-center gap-3">
+          <div
+            className="h-px w-10"
+            style={{ backgroundColor: "rgba(207, 134, 33, 0.42)" }}
+          />
+          <p
+            className="text-[11px] uppercase tracking-[0.3em]"
+            style={{
+              color: "var(--color-terra)",
+              fontFamily: "var(--font-body)",
+            }}
+          >
+            Casa Checo
+          </p>
+        </div>
 
-          <div className="space-y-4">
-            {section.items.map((item) =>
-              section.spirits ? (
-                <SpiritItem key={item.name} item={item} />
-              ) : (
-                <StandardItem key={item.name} item={item} />
-              ),
-            )}
-          </div>
-        </>
-      )}
-    </section>
+        <h2
+          className="mt-4 text-3xl leading-tight sm:text-4xl"
+          style={{
+            color: "var(--color-brown)",
+            fontFamily: "var(--font-title)",
+          }}
+        >
+          {section.title}
+        </h2>
+      </div>
+
+      <div className="space-y-4">
+        {section.items.map((item) =>
+          section.spirits ? (
+            <SpiritItem key={item.name} item={item} />
+          ) : (
+            <StandardItem key={item.name} item={item} />
+          ),
+        )}
+      </div>
+    </Motion.section>
   );
 }
 
@@ -295,6 +341,16 @@ function MenuPage() {
   const [activeTab, setActiveTab] = useState("foods");
 
   const currentMenu = MENU_DATA[activeTab];
+
+  const totalEntries = useMemo(() => {
+    return currentMenu.sections.reduce((acc, section) => {
+      if (section.special && section.included) {
+        return acc + section.included.length;
+      }
+
+      return acc + (section.items?.length || 0);
+    }, 0);
+  }, [currentMenu]);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -314,10 +370,21 @@ function MenuPage() {
 
   return (
     <main
-      className="min-h-screen px-4 pb-12 pt-20 sm:px-6 sm:pt-24"
+      className="relative min-h-screen overflow-hidden px-4 pb-12 pt-20 sm:px-6 sm:pt-24"
       style={{ backgroundColor: "var(--color-cream)" }}
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className="absolute -left-15 top-16 h-48 w-48 rounded-full blur-3xl"
+          style={{ backgroundColor: "rgba(24, 35, 107, 0.08)" }}
+        />
+        <div
+          className="absolute -right-10 top-44 h-56 w-56 rounded-full blur-3xl"
+          style={{ backgroundColor: "rgba(207, 134, 33, 0.09)" }}
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <Link
             to="/"
@@ -326,6 +393,7 @@ function MenuPage() {
               backgroundColor: "var(--color-primary)",
               color: "#fff8eb",
               fontFamily: "var(--font-body)",
+              boxShadow: "0 12px 24px rgba(24, 35, 107, 0.18)",
             }}
           >
             <ArrowLeft size={16} />
@@ -335,7 +403,7 @@ function MenuPage() {
           <div
             className="text-[10px] uppercase tracking-[0.32em] sm:text-xs"
             style={{
-              color: "rgba(47, 27, 5, 0.65)",
+              color: "rgba(47, 27, 5, 0.62)",
               fontFamily: "var(--font-body)",
             }}
           >
@@ -343,68 +411,155 @@ function MenuPage() {
           </div>
         </div>
 
-        <header
-          className="mt-8 rounded-[2rem] border px-6 py-7 sm:px-8 sm:py-9"
-          style={{
-            borderColor: "rgba(47, 27, 5, 0.1)",
-            backgroundColor: "rgba(255,255,255,0.45)",
-          }}
-        >
-          <p
-            className="text-[11px] uppercase tracking-[0.35em]"
-            style={{
-              color: "var(--color-terra)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            {currentMenu.eyebrow}
-          </p>
-
-          <h1
-            className="mt-4 text-4xl leading-tight sm:text-5xl"
-            style={{
-              color: "var(--color-brown)",
-              fontFamily: "var(--font-title)",
-            }}
-          >
-            {currentMenu.title}
-          </h1>
-
-          <p
-            className="mt-5 max-w-2xl text-sm leading-7 sm:text-base"
-            style={{
-              color: "rgba(47, 27, 5, 0.76)",
-              fontFamily: "var(--font-body)",
-            }}
-          >
-            {currentMenu.description}
-          </p>
-
-          <div className="mt-7 flex flex-wrap gap-3">
-            <TabButton
-              isActive={activeTab === "foods"}
-              onClick={() => handleTabChange("foods")}
-            >
-              Alimentos
-            </TabButton>
-
-            <TabButton
-              isActive={activeTab === "drinks"}
-              onClick={() => handleTabChange("drinks")}
-            >
-              Bebidas
-            </TabButton>
-          </div>
-        </header>
-
-        <div
-          className="sticky top-4 z-20 mt-6 overflow-hidden rounded-[1.5rem] border px-4 py-4 backdrop-blur-xl sm:px-5"
+        <Motion.header
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="relative mt-8 overflow-hidden rounded-[2.2rem] border px-6 py-7 sm:px-8 sm:py-9"
           style={{
             borderColor: "rgba(47, 27, 5, 0.08)",
-            backgroundColor: "rgba(243, 234, 216, 0.82)",
-            boxShadow: "0 10px 24px rgba(47, 27, 5, 0.06)",
+            background:
+              "linear-gradient(135deg, rgba(255,255,255,0.72) 0%, rgba(243,234,216,0.82) 100%)",
+            boxShadow: "0 20px 44px rgba(47, 27, 5, 0.06)",
           }}
         >
+          <div className="absolute -right-8 top-0 h-28 w-28 rounded-full bg-[rgba(24,35,107,0.08)] blur-2xl" />
+          <div className="absolute bottom-0 left-0 h-24 w-24 rounded-full bg-[rgba(207,134,33,0.08)] blur-2xl" />
+
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/55 px-4 py-2">
+              <Sparkles size={14} color="#18236b" />
+              <p
+                className="text-[10px] uppercase tracking-[0.3em]"
+                style={{
+                  color: "var(--color-terra)",
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                {currentMenu.eyebrow}
+              </p>
+            </div>
+
+            <h1
+              className="mt-5 text-4xl leading-tight sm:text-5xl"
+              style={{
+                color: "var(--color-brown)",
+                fontFamily: "var(--font-title)",
+              }}
+            >
+              {currentMenu.title}
+            </h1>
+
+            <p
+              className="mt-4 max-w-2xl text-sm leading-7 sm:text-base"
+              style={{
+                color: "rgba(47, 27, 5, 0.76)",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              {currentMenu.description}
+            </p>
+
+            <div className="mt-7 flex flex-wrap gap-3">
+              <TabButton
+                isActive={activeTab === "foods"}
+                onClick={() => handleTabChange("foods")}
+                icon={UtensilsCrossed}
+              >
+                Alimentos
+              </TabButton>
+
+              <TabButton
+                isActive={activeTab === "drinks"}
+                onClick={() => handleTabChange("drinks")}
+                icon={Martini}
+              >
+                Bebidas
+              </TabButton>
+            </div>
+
+            <div className="mt-7 grid gap-3 sm:max-w-md sm:grid-cols-2">
+              <div
+                className="rounded-[1.35rem] border px-4 py-4"
+                style={{
+                  borderColor: "rgba(47, 27, 5, 0.08)",
+                  backgroundColor: "rgba(255,255,255,0.56)",
+                }}
+              >
+                <div
+                  className="text-[10px] uppercase tracking-[0.24em]"
+                  style={{
+                    color: "rgba(47, 27, 5, 0.5)",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  Categorías
+                </div>
+                <div
+                  className="mt-2 text-2xl"
+                  style={{
+                    color: "var(--color-primary)",
+                    fontFamily: "var(--font-title)",
+                  }}
+                >
+                  {currentMenu.sections.length}
+                </div>
+              </div>
+
+              <div
+                className="rounded-[1.35rem] border px-4 py-4"
+                style={{
+                  borderColor: "rgba(47, 27, 5, 0.08)",
+                  backgroundColor: "rgba(255,255,255,0.56)",
+                }}
+              >
+                <div
+                  className="text-[10px] uppercase tracking-[0.24em]"
+                  style={{
+                    color: "rgba(47, 27, 5, 0.5)",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  Opciones
+                </div>
+                <div
+                  className="mt-2 text-2xl"
+                  style={{
+                    color: "var(--color-primary)",
+                    fontFamily: "var(--font-title)",
+                  }}
+                >
+                  {totalEntries}+
+                </div>
+              </div>
+            </div>
+          </div>
+        </Motion.header>
+
+        <div
+          className="sticky top-4 z-20 mt-6 overflow-hidden rounded-[1.6rem] border px-4 py-4 backdrop-blur-xl sm:px-5"
+          style={{
+            borderColor: "rgba(47, 27, 5, 0.08)",
+            backgroundColor: "rgba(243, 234, 216, 0.8)",
+            boxShadow: "0 12px 26px rgba(47, 27, 5, 0.05)",
+          }}
+        >
+          <div className="mb-3 flex items-center gap-3">
+            <div
+              className="h-px w-8"
+              style={{ backgroundColor: "rgba(207, 134, 33, 0.4)" }}
+            />
+            <p
+              className="text-[10px] uppercase tracking-[0.28em]"
+              style={{
+                color: "rgba(47, 27, 5, 0.55)",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Explora por categoría
+            </p>
+          </div>
+
           <div
             className="flex gap-2 overflow-x-auto pb-1"
             style={{
@@ -424,8 +579,8 @@ function MenuPage() {
         </div>
 
         <div className="mt-8 grid gap-6">
-          {currentMenu.sections.map((section) => (
-            <MenuSection key={section.id} section={section} />
+          {currentMenu.sections.map((section, index) => (
+            <MenuSection key={section.id} section={section} index={index} />
           ))}
         </div>
 
@@ -433,12 +588,13 @@ function MenuPage() {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm"
+            className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm transition duration-300 hover:-translate-y-[1px]"
             style={{
               backgroundColor: "rgba(24, 35, 107, 0.08)",
               color: "var(--color-primary)",
               fontFamily: "var(--font-body)",
               border: "1px solid rgba(24, 35, 107, 0.1)",
+              boxShadow: "0 10px 22px rgba(24, 35, 107, 0.06)",
             }}
           >
             Volver arriba
