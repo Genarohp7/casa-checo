@@ -10,6 +10,8 @@ const links = [
   { label: "Ubicación", section: "ubicacion" },
 ];
 
+const AURA_URL = "https://genarohp7.github.io/aura-cuicuilco/";
+
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -83,8 +85,10 @@ function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <button
-              type="button"
+            <a
+              href={AURA_URL}
+              target="_blank"
+              rel="noreferrer"
               className="hidden items-center whitespace-nowrap rounded-full px-4 py-2 text-[10px] uppercase tracking-[0.14em] lg:inline-flex"
               style={{
                 border: "1px solid rgba(230, 221, 188, 0.2)",
@@ -94,7 +98,7 @@ function Navbar() {
               }}
             >
               Eventos en Aura
-            </button>
+            </a>
 
             <Link
               to="/menu"
@@ -165,8 +169,11 @@ function Navbar() {
               }}
             >
               <div className="flex flex-col gap-3">
-                <button
-                  type="button"
+                <a
+                  href={AURA_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={handleCloseMenu}
                   className="rounded-2xl px-4 py-4 text-sm uppercase tracking-[0.16em] text-left transition"
                   style={{
                     color: "#fff8eb",
@@ -174,8 +181,8 @@ function Navbar() {
                     fontFamily: "var(--font-body)",
                   }}
                 >
-                  Aura
-                </button>
+                  Eventos en Aura
+                </a>
 
                 <Link
                   to="/menu"
