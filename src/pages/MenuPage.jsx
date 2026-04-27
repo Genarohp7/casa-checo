@@ -1,8 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion as Motion } from "motion/react";
 import {
   ArrowLeft,
-  ChevronRight,
+  ChevronUp,
   Martini,
   Sparkles,
   UtensilsCrossed,
@@ -10,12 +10,22 @@ import {
 import { Link } from "react-router-dom";
 import MENU_DATA from "../data/menuData";
 
-function TabButton({ isActive, onClick, icon: Icon, children }) {
+function normalizeLabel(value = "") {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim()
+    .toLowerCase();
+}
+
+function TabButton({ isActive, onClick, icon, children }) {
+  const IconComponent = icon;
+
   return (
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm transition-all duration-300"
+      className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm transition-all duration-300 hover:-translate-y-[1px] hover:scale-[1.02]"
       style={{
         background: isActive
           ? "linear-gradient(135deg, rgba(24,35,107,1) 0%, rgba(42,60,160,0.96) 100%)"
@@ -30,24 +40,30 @@ function TabButton({ isActive, onClick, icon: Icon, children }) {
         fontFamily: "var(--font-body)",
       }}
     >
-      <Icon size={16} />
+      {IconComponent ? <IconComponent size={16} /> : null}
       {children}
     </button>
   );
 }
 
-function CategoryChip({ onClick, children }) {
+function CategoryChip({ onClick, children, highlight = false }) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="whitespace-nowrap rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] transition duration-300 hover:-translate-y-[1px]"
+      className="whitespace-nowrap rounded-full px-4 py-2 text-xs uppercase tracking-[0.16em] transition-all duration-300 hover:-translate-y-[1px] hover:scale-[1.02]"
       style={{
-        backgroundColor: "rgba(255,255,255,0.72)",
-        border: "1px solid rgba(47, 27, 5, 0.08)",
-        color: "var(--color-brown)",
+        backgroundColor: highlight
+          ? "rgba(207, 134, 33, 0.16)"
+          : "rgba(255,255,255,0.72)",
+        border: highlight
+          ? "1px solid rgba(207, 134, 33, 0.34)"
+          : "1px solid rgba(47, 27, 5, 0.08)",
+        color: highlight ? "var(--color-primary)" : "var(--color-brown)",
         fontFamily: "var(--font-body)",
-        boxShadow: "0 8px 18px rgba(47, 27, 5, 0.04)",
+        boxShadow: highlight
+          ? "0 10px 22px rgba(207, 134, 33, 0.12)"
+          : "0 8px 18px rgba(47, 27, 5, 0.04)",
       }}
     >
       {children}
@@ -339,18 +355,20 @@ function MenuSection({ section, index }) {
 
 function MenuPage() {
   const [activeTab, setActiveTab] = useState("foods");
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const currentMenu = MENU_DATA[activeTab];
 
-  const totalEntries = useMemo(() => {
-    return currentMenu.sections.reduce((acc, section) => {
-      if (section.special && section.included) {
-        return acc + section.included.length;
-      }
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+    };
 
-      return acc + (section.items?.length || 0);
-    }, 0);
-  }, [currentMenu]);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -388,7 +406,7 @@ function MenuPage() {
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <Link
             to="/"
-            className="inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm"
+            className="inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm transition-all duration-300 hover:-translate-y-[1px] hover:scale-[1.02]"
             style={{
               backgroundColor: "var(--color-primary)",
               color: "#fff8eb",
@@ -461,77 +479,21 @@ function MenuPage() {
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <TabButton
-                isActive={activeTab === "foods"}
-                onClick={() => handleTabChange("foods")}
-                icon={UtensilsCrossed}
-              >
-                Alimentos
-              </TabButton>
+          <TabButton
+  isActive={activeTab === "foods"}
+  onClick={() => handleTabChange("foods")}
+  icon={UtensilsCrossed}
+>
+  Alimentos
+</TabButton>
 
-              <TabButton
-                isActive={activeTab === "drinks"}
-                onClick={() => handleTabChange("drinks")}
-                icon={Martini}
-              >
-                Bebidas
-              </TabButton>
-            </div>
-
-            <div className="mt-7 grid gap-3 sm:max-w-md sm:grid-cols-2">
-              <div
-                className="rounded-[1.35rem] border px-4 py-4"
-                style={{
-                  borderColor: "rgba(47, 27, 5, 0.08)",
-                  backgroundColor: "rgba(255,255,255,0.56)",
-                }}
-              >
-                <div
-                  className="text-[10px] uppercase tracking-[0.24em]"
-                  style={{
-                    color: "rgba(47, 27, 5, 0.5)",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
-                  Categorías
-                </div>
-                <div
-                  className="mt-2 text-2xl"
-                  style={{
-                    color: "var(--color-primary)",
-                    fontFamily: "var(--font-title)",
-                  }}
-                >
-                  {currentMenu.sections.length}
-                </div>
-              </div>
-
-              <div
-                className="rounded-[1.35rem] border px-4 py-4"
-                style={{
-                  borderColor: "rgba(47, 27, 5, 0.08)",
-                  backgroundColor: "rgba(255,255,255,0.56)",
-                }}
-              >
-                <div
-                  className="text-[10px] uppercase tracking-[0.24em]"
-                  style={{
-                    color: "rgba(47, 27, 5, 0.5)",
-                    fontFamily: "var(--font-body)",
-                  }}
-                >
-                  Opciones
-                </div>
-                <div
-                  className="mt-2 text-2xl"
-                  style={{
-                    color: "var(--color-primary)",
-                    fontFamily: "var(--font-title)",
-                  }}
-                >
-                  {totalEntries}+
-                </div>
-              </div>
+<TabButton
+  isActive={activeTab === "drinks"}
+  onClick={() => handleTabChange("drinks")}
+  icon={Martini}
+>
+  Bebidas
+</TabButton>
             </div>
           </div>
         </Motion.header>
@@ -561,20 +523,28 @@ function MenuPage() {
           </div>
 
           <div
-            className="flex gap-2 overflow-x-auto pb-1"
+            className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
             }}
           >
-            {currentMenu.sections.map((section) => (
-              <CategoryChip
-                key={section.id}
-                onClick={() => handleJump(section.id)}
-              >
-                {section.title}
-              </CategoryChip>
-            ))}
+            {currentMenu.sections.map((section) => {
+              const normalizedTitle = normalizeLabel(section.title);
+              const isHighlighted =
+                normalizedTitle === "desayuno ejecutivo" ||
+                normalizedTitle === "menu del dia";
+
+              return (
+                <CategoryChip
+                  key={section.id}
+                  onClick={() => handleJump(section.id)}
+                  highlight={isHighlighted}
+                >
+                  {section.title}
+                </CategoryChip>
+              );
+            })}
           </div>
         </div>
 
@@ -583,25 +553,26 @@ function MenuPage() {
             <MenuSection key={section.id} section={section} index={index} />
           ))}
         </div>
-
-        <div className="mt-10 flex justify-center">
-          <button
-            type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm transition duration-300 hover:-translate-y-[1px]"
-            style={{
-              backgroundColor: "rgba(24, 35, 107, 0.08)",
-              color: "var(--color-primary)",
-              fontFamily: "var(--font-body)",
-              border: "1px solid rgba(24, 35, 107, 0.1)",
-              boxShadow: "0 10px 22px rgba(24, 35, 107, 0.06)",
-            }}
-          >
-            Volver arriba
-            <ChevronRight size={16} />
-          </button>
-        </div>
       </div>
+
+      {showScrollTop ? (
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-6 right-6 z-30 inline-flex items-center gap-2 rounded-full px-4 py-3 text-sm transition-all duration-300 hover:-translate-y-[2px] hover:scale-[1.03]"
+          style={{
+            backgroundColor: "var(--color-primary)",
+            color: "#fff8eb",
+            fontFamily: "var(--font-body)",
+            boxShadow: "0 16px 30px rgba(24, 35, 107, 0.24)",
+          }}
+          aria-label="Volver arriba"
+          title="Volver arriba"
+        >
+          <ChevronUp size={16} />
+          Arriba
+        </button>
+      ) : null}
     </main>
   );
 }
